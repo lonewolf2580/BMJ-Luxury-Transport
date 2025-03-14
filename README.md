@@ -83,7 +83,7 @@ BMJ is a **tech-enabled luxury transportation platform** designed to provide hig
 5. **Trip Confirmation & Real-time Tracking**
     - WebSockets / Firebase Realtime Database updates locations every 3-5 seconds.
 
-## Database Schema
+##  Database Schema
 
 ###  Users
 
