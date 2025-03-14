@@ -44,7 +44,7 @@ BMJ is a **tech-enabled luxury transportation platform** designed to provide hig
 └─────────────┘
 ```
 
-## 🚀 Tech Stack
+## Tech Stack
 
 ### Frontend (Mobile App)
 
@@ -65,7 +65,7 @@ BMJ is a **tech-enabled luxury transportation platform** designed to provide hig
 | Push Notifications | Firebase Cloud Messaging, Twilio |
 | Authentication | Firebase Auth, OAuth, JWT |
 
-## 🔄 Ride Matching Algorithm
+## Ride Matching Algorithm
 
 1. **Rider Requests Ride**
     - Rider location is geocoded.
@@ -83,9 +83,9 @@ BMJ is a **tech-enabled luxury transportation platform** designed to provide hig
 5. **Trip Confirmation & Real-time Tracking**
     - WebSockets / Firebase Realtime Database updates locations every 3-5 seconds.
 
-## 📊 Database Schema
+## Database Schema
 
-### Users
+###  Users
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -98,7 +98,7 @@ BMJ is a **tech-enabled luxury transportation platform** designed to provide hig
 | rating | Number | User’s rating (1-5) |
 | created_at | Timestamp | Account creation |
 
-### Trips
+###  Trips
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -111,7 +111,7 @@ BMJ is a **tech-enabled luxury transportation platform** designed to provide hig
 | fare | Number | Total ride cost |
 | payment_status | Enum(pending, paid, failed) | Payment state |
 
-### Drivers
+###  Drivers
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -121,7 +121,7 @@ BMJ is a **tech-enabled luxury transportation platform** designed to provide hig
 | rating | Number | Driver’s average rating |
 | current_location | Object | {lat, long} |
 
-### Payments
+###  Payments
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -132,7 +132,7 @@ BMJ is a **tech-enabled luxury transportation platform** designed to provide hig
 | method | Enum(card, wallet, cash) | Payment method |
 | status | Enum(pending, success, failed) | Payment status |
 
-## 🌍 Serverless vs Dedicated Backend
+## Serverless vs Dedicated Backend
 
 | Feature | Serverless (AWS Lambda, Firebase Functions) | Dedicated Backend (Node.js/Django) |
 |---------|---------------------------------------------|-----------------------------------|
@@ -143,18 +143,18 @@ BMJ is a **tech-enabled luxury transportation platform** designed to provide hig
 
 ## 🏗 Development Roadmap
 
-### ✅ Phase 1: MVP Development
+###  Phase 1: MVP Development
 - User authentication & profile setup
 - Driver onboarding
 - Basic ride booking & trip status updates
 - Payment integration (Stripe, Paystack)
 
-### ✅ Phase 2: Real-time Tracking & Optimization
+###  Phase 2: Real-time Tracking & Optimization
 - Implement geospatial ride-matching
 - Enable WebSocket/Firebase live tracking
 - Add surge pricing
 
-### ✅ Phase 3: Advanced Features
+###  Phase 3: Advanced Features
 - Ride history & analytics
 - Machine learning for route optimization
 - AI-based customer support
