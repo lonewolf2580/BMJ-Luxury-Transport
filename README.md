@@ -5,7 +5,7 @@ BMJ is a **tech-enabled luxury transportation platform** designed to provide hig
 
 ---
 
-## 🏗 System Architecture  
+##  System Architecture  
 
 ```plaintext
                     ┌──────────────────────────────┐
