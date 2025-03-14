@@ -42,7 +42,7 @@ BMJ is a **tech-enabled luxury transportation platform** designed to provide hig
 │ Analytics &  │
 │ ML Models   │
 └─────────────┘
-
+```
 
 ## 🚀 Tech Stack
 
