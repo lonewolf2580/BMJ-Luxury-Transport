@@ -1,6 +1,6 @@
-# 🚖 Luxury Ride-Sharing Platform (BMJ Transport)
+#  Luxury Ride-Sharing Platform (BMJ Transport)
 
-## 📌 Overview  
+##  Overview  
 BMJ is a **tech-enabled luxury transportation platform** designed to provide high-end ride services. This document details the **system architecture, tech stack, ride-matching algorithm, database schema, and workflow**.
 
 ---
