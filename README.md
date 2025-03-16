@@ -11,35 +11,35 @@ BMJ is a **tech-enabled luxury transportation platform** designed to provide hig
                     ┌──────────────────────────────┐
                     │          User App            │
                     │   (React Native / Flutter)   │
-                    └──────────▲─────────────┬────┘
+                    └──────────▲─────────────┬─────┘
                                │             │
            ┌───────────────────┘             │
            │                           ┌─────▼───────┐
-           │                           │   Driver App │
-           │                           │(React Native)│
+           │                           │  Company    │
+           │                           │ Dashboard   │
            │                           └─────▲───────┘
            │                                 │
- ┌─────────▼────────┐                   ┌───┴────┐
- │      Backend     │  WebSocket/API     │ Matching│
- │  (Node.js/Django)│◄──────────────────►│ Engine │
+ ┌─────────▼────────┐                    ┌───┴────┐
+ │      Backend     │  WebSocket/API     │ Book   |
+ │  (Node.js/Django)│◄──────────────────►│ Ride   │
  │                  │                    └───▲────┘
  └───┬───────┬──────┘                        │
      │       │          ┌────────────────────┘
      │       │          │
      │       ▼          ▼
- ┌───▼───┐  ┌──────────┴──────────┐
- │Database│  │Real-time GPS System│
- │(NoSQL) │  │   (Google Maps)   │
- └────▲───┘  └─────────▲──────────┘
+ ┌───▼────┐  ┌──────────┴──────────┐
+ │Database│  │Real-time GPS System │
+ │(NoSQL) │  │   (Google Maps)     │
+ └────▲───┘  └─────────▲───────────┘
       │                │
-      │          ┌─────┴──────────┐
+      │          ┌─────┴───────────┐
       │          │ Payment Gateway │
-      │          │ (Stripe/Paystack) │
+      │          │(Stripe/Paystack)│
       │          └─────────────────┘
       │
       ▼
 ┌─────────────┐
-│ Analytics &  │
+│ Analytics & │
 │ ML Models   │
 └─────────────┘
 ```
