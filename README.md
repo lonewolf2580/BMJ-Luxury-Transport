@@ -1,7 +1,7 @@
 #  Luxury Ride-Sharing Platform (BMJ Transport)
 
 ##  Overview  
-BMJ is a **tech-enabled luxury transportation platform** designed to provide high-end ride services. This document details the **system architecture, tech stack, ride-matching algorithm, database schema, and workflow**.
+BMJ is a **tech-enabled luxury transportation platform** designed to provide high-end ride services. This document details the **system architecture, tech stack, database schema, and workflow**.
 
 ---
 
@@ -43,6 +43,34 @@ BMJ is a **tech-enabled luxury transportation platform** designed to provide hig
 │ ML Models   │
 └─────────────┘
 ```
+## Pricing Algorithm
+
+The pricing for rides is directly proportional to flight costs from various sources. The fare calculation is as follows:
+
+1. **Fetch Flight Prices**
+    - Obtain flight prices from up to 4 sources.
+    - Calculate the average flight price.
+
+    ```python
+    percentage = 50
+    flight_average = (p1 + p2 + p3 + p4) / 4
+    ride_cost = (flight_average / 100) * percentage
+    ```
+
+2. **Advanced Booking**
+    - The fare remains consistent when booked in advance.
+
+3. **Dynamic Pricing (3-5 Days Before Trip)**
+    - Fare increases as the trip date approaches, based on airline prices.
+
+4. **Same-Day Booking**
+    - If all airlines are sold out, a higher price is set due to increased demand and no supply.
+
+## API Integration for Flight Prices
+
+Currently, there are no APIs available for Nigerian flight prices. Therefore, we will either need to directly contact airlines for their pricing data or manually update the flight prices in our system.
+
+These APIs will help fetch real-time flight prices to calculate the ride cost accurately.
 
 ## Tech Stack
 
@@ -59,29 +87,43 @@ BMJ is a **tech-enabled luxury transportation platform** designed to provide hig
 |---------|------------|
 | Server | Node.js (Express/NestJS) or Django (Python) |
 | Database | NoSQL (MongoDB, Firebase Firestore, DynamoDB) or SQL (PostgreSQL, MySQL) |
-| Ride Matching | Google S2 / Uber H3 for geospatial indexing |
 | Real-time Tracking | WebSockets, Firebase Realtime Database |
 | Payments | Stripe, Paystack, Flutterwave |
 | Push Notifications | Firebase Cloud Messaging, Twilio |
 | Authentication | Firebase Auth, OAuth, JWT |
 
-## Ride Matching Algorithm
+## Ride Booking Process
 
-1. **Rider Requests Ride**
-    - Rider location is geocoded.
-    - Backend saves the request.
-2. **Find Nearby Drivers**
-    - Query drivers table where status = online.
-    - Use geospatial indexing (Google S2 / Uber H3) to find drivers within a 5 km radius.
-3. **Rank Available Drivers**
-    - ETA (shortest time to pickup).
-    - Driver rating (higher is better).
-    - Acceptance rate (drivers who reject often are deprioritized).
-4. **Driver Notification**
-    - Closest driver has 15 seconds to accept.
-    - If declined, the next best driver is notified.
-5. **Trip Confirmation & Real-time Tracking**
-    - WebSockets / Firebase Realtime Database updates locations every 3-5 seconds.
+1. **User Schedules Ride**
+    - The user selects the desired ride from a list of scheduled rides.
+    - The user inputs the number of seats required and confirms the booking.
+2. **Estimate Fare**
+    - The system calculates the fare based on the number of seats and the dynamic pricing factors.
+3. **Confirm Booking**
+    - Once the booking is confirmed, the user receives a confirmation with ride details.
+4. **Payment Processing**
+    - The user pays for the ride in advance.
+    - Payment status is updated to reflect the successful transaction.
+5. **Enable Real-time Tracking**
+    - On the day of the ride, use WebSockets / Firebase Realtime Database to update the vehicle's location every 2-3 seconds.
+6. **Complete Ride**
+    - Upon reaching the destination, the trip status is updated to completed.
+    - Users can provide feedback on the ride experience.
+
+## Dynamic Pricing Factors
+
+1. **Flight Cancellations**
+    - Prices will be higher on days with a high number of flight cancellations.
+2. **Advanced Booking**
+    - The fare remains consistent when booked in advance.
+3. **Same-Day Booking**
+    - Higher prices are set for same-day bookings due to increased demand.
+
+## Company Fleet
+
+- All rides are conducted using company-owned luxury vehicles.
+- Focus on providing a premium and consistent ride experience.
+
 
 ##  Database Schema
 
@@ -150,7 +192,6 @@ BMJ is a **tech-enabled luxury transportation platform** designed to provide hig
 - Payment integration (Stripe, Paystack)
 
 ###  Phase 2: Real-time Tracking & Optimization
-- Implement geospatial ride-matching
 - Enable WebSocket/Firebase live tracking
 - Add surge pricing
 
